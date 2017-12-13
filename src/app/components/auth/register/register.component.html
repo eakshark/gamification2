@@ -1,0 +1,58 @@
+<div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="panel-title">Sign Up</div>
+        <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" routerLink="/login" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
+      </div>
+      <div class="panel-body">
+        <form #registerForm="ngForm" name="form" (ngSubmit)="submitForm(registerForm.value)"  class="form-horizontal"  >
+      <fieldset>
+
+          <div class="form-group">
+            <label for="email" class="col-md-3 control-label">Email</label>
+            <div class="col-md-9">
+              <input type="text" [(ngModel)]="user.username"  class="form-control" name="email" placeholder="Email Address">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="companyName" class="col-md-3 control-label">Company Name</label>
+                        <div class="col-md-9">
+
+              <select class="form-control" [(ngModel)]="user.companyName" name="companyName"  selectedWorkout = "companyName" >
+                        <option *ngFor="let company of companyNames" >{{company}}  </option>
+                    </select>
+                 
+
+                </div>
+          </div>
+
+          <div class="form-group">
+            <label for="imageUrl" class="col-md-3 control-label">Image Url</label>
+            <div class="col-md-9">
+              <input type="text" [(ngModel)]="user.imageUrl"  class="form-control" name="imageUrl" placeholder="Image URL">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="col-md-3 control-label">Password</label>
+            <div class="col-md-9">
+              <input type="password" class="form-control"  [(ngModel)]="user.password"  name="passwd" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="confpasswd" class="col-md-3 control-label">Confirm Password</label>
+            <div class="col-md-9">
+              <input type="password" class="form-control" [(ngModel)]="user.confirmPassword"  name="confpasswd" placeholder="Confirm Password">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+              <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Sign Up</button>
+            </div>
+          </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
