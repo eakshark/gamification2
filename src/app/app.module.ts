@@ -15,6 +15,7 @@ import { CompanyService } from "./services/company/company.service";
 import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
 import { AppService } from "./services/app/app.service";
+import { CompanyComponent } from './components/company/company.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AppService } from "./services/app/app.service";
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,

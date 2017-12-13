@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   Http, RequestOptions, Headers, Response
 } from '@angular/http'
+import {HttpClient} from '@angular/common/http'
 import {Cookie} from 'ng2-cookies'
 import { Router } from '@angular/router';
 import { Observable } from "rxjs/Observable";
@@ -20,46 +21,13 @@ export class Foo {
 @Injectable()
 export class AppService {
   constructor(
-    private _router: Router, private _http: Http) { }
+    private _router: Router, private http: HttpClient) { }
 
   obtainAccessToken(loginData) {
-    let params = new URLSearchParams();
-    params.append('username', loginData.username);
-    params.append('password', loginData.password);
-    params.append('grant_type', 'password');
-    params.append('client_id', 'fooClientIdPassword');
-    let headers = new Headers({ 'Content-type': 'application/x-www-form-urlencoded; charset=utf-8', 'Authorization': 'Basic ' + btoa("fooClientIdPassword:secret") });
-    let options = new RequestOptions({ headers });
-
-    this._http.post('http://localhost:8080/login', params.toString(), options)
+    
+    this.http.post('http://localhost:8080/login/angular', loginData,{withCredentials:true})
       .map(res => console.log(res) )
-      .subscribe(
-      data => this.saveToken(data),
-      err => alert('Invalid Credentials'));
+      .subscribe();
   }
 
-  saveToken(token) {
-    var expireDate = new Date().getTime() + (1000 * token.expires_in);
-    Cookie.set("access_token", token.access_token, expireDate);
-    this._router.navigate(['/']);
-  }
-
-  getResource(resourceUrl): Observable<Foo> {
-    var headers = new Headers({ 'Content-type': 'application/x-www-form-urlencoded; charset=utf-8', 'Authorization': 'Bearer ' + Cookie.get('access_token') });
-    var options = new RequestOptions({ headers: headers });
-    return this._http.get(resourceUrl, options)
-      .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-  }
-
-  checkCredentials() {
-    if (!Cookie.check('access_token')) {
-      this._router.navigate(['/login']);
-    }
-  }
-
-  logout() {
-    Cookie.delete('access_token');
-    this._router.navigate(['/login']);
-  }
 }
