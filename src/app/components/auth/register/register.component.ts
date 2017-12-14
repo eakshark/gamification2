@@ -21,8 +21,9 @@ export class RegisterComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.companyService.getAllCompanies().subscribe((data)=>{
-      this.companyNames = data;
+    this.companyService.getAllCompanies().subscribe((data:any)=>{
+      console.log(data)
+      this.companyNames = data.object;
       this.user.companyName = this.companyNames[0]
       console.log(this.companyNames)
     });

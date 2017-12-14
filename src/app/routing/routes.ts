@@ -17,7 +17,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'companies/all',
+    path: 'companies/all/:page',
     component: CompanyComponent
   }
 
