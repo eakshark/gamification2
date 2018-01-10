@@ -1,0 +1,42 @@
+<form role="form" action="" method="post" th:fragment="add-step" *ngIf="step">
+  <div class="col-lg-12">
+    <h1>Add Step</h1>
+    <div class="form-group">
+      <label for="InputDescription">Description</label>
+      <div class="input-group">
+        <textarea name="description"  [(ngModel)]="step.description"  class="form-control" rows="7" required="true" th:required="true"></textarea>
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-ok form-control-feedback"></i>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="InputDescription">Skeleton</label>
+      <div class="input-group">
+        <textarea name="skeleton" class="form-control" [(ngModel)]="step.skeleton" rows="15" required="true" th:required="true"></textarea>
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-ok form-control-feedback"></i>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="InputDescription">JUnit Tests</label>
+      <div class="input-group">
+        <textarea name="tests" class="form-control"[(ngModel)]="step.tests"  rows="15" required="true" th:required="true"></textarea>
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-ok form-control-feedback"></i>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="InputDescription">Points Prize</label>
+      <div class="input-group">
+        <input type="text" name="prize" class="form-control" [(ngModel)]="step.price"  rows="5" required="true" th:required="true" />
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-ok form-control-feedback"></i>
+        </span>
+      </div>
+    </div>
+    <button (click)="saveStep()">Save Step</button>
+  </div>
+</form>

@@ -5,8 +5,9 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 @Injectable()
 export class AuthService {
   isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  user: BehaviorSubject<any> = new BehaviorSubject({});
+  user: BehaviorSubject<Object> = new BehaviorSubject({});
   isAdmin: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  username: BehaviorSubject<string> = new BehaviorSubject("");
 
 
 
@@ -17,6 +18,10 @@ export class AuthService {
 
     if (sessionStorage.getItem("isAdmin") === "true") {
       this.isAdmin.next(true)
+    }
+
+    if(sessionStorage.getItem("username")){
+      this.username.next(sessionStorage.getItem("username"))
     }
   }
 
@@ -34,13 +39,20 @@ export class AuthService {
         //let obj = data.object
         this.isAuthenticated.next(true)
         this.user.next(data.object)
+        this.username.next(data.object.username)
+        sessionStorage.setItem("username", data.object.username)
+        
         for (let role of data.object.role) {
           if (role === "ROLE_ADMIN") {
             this.isAdmin.next(true)
             sessionStorage.setItem("isAdmin", "true")
           }
         }
+        
 
+      },
+      err => {
+        
       });
     sessionStorage.setItem("isAuthenticated", "true")
 

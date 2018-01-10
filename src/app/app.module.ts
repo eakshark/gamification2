@@ -16,6 +16,12 @@ import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
 import { AppService } from "./services/app/app.service";
 import { CompanyComponent } from './components/company/company.component';
+import { CampaignComponent } from './components/campaign/campaign.component';
+import { StepsComponent } from './components/steps/steps.component';
+import { StepComponent } from './components/step/step.component';
+import { StepService } from './services/step/step.service';
+import { AllCampaignComponent } from './components/campaign/all-campaign/all-campaign.component';
+import { CampaignService } from './services/campaign/campaign.service';
 
 
 @NgModule({
@@ -26,7 +32,11 @@ import { CompanyComponent } from './components/company/company.component';
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    CompanyComponent
+    CompanyComponent,
+    CampaignComponent,
+    StepsComponent,
+    StepComponent,
+    AllCampaignComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +46,7 @@ import { CompanyComponent } from './components/company/company.component';
     HttpModule
 
   ],
-  providers: [AuthService,CompanyService,AppService],
+  providers: [AuthService,CompanyService,AppService,StepService,CampaignService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+          <div class="panel panel-default panel-table">
+              <div class="panel-heading">
+                  <div class="row">
+                      <div class="col col-xs-6">
+                          <h3 class="panel-title">Campaigns</h3>
+                      </div>
+                      <div class="col col-xs-6 text-right" sec:authorize="hasRole('ADMIN')">
+                          <button  type="button" class="btn btn-sm btn-primary btn-create"><a href="/campaign/add" style="color: white">Create New</a></button>
+                      </div>
+                  </div>
+              </div>
+              <div class="panel-body">
+                  <table class="table table-striped table-bordered table-list">
+                      <thead>
+                      <tr>
+                          <th sec:authorize="hasRole('ADMIN')"><em class="glyphicon glyphicon-cog"></em></th>
+                          <th style="width: 200px">Start Date</th>
+                          <th>End Date</th>
+                          <th>Description</th>
+                          <th>LeaderBoard</th>
+                          <th sec:authorize="isAuthenticated()">Start Campaign</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let step of campaigns">
+                          <td align="center" >
+                              <a th:onclick="'confirmDelete('+${camp.id}+')'" class="btn btn-danger" sec:authorize="hasRole('ADMIN')"><i class="glyphicon glyphicon-trash"></i></a>
+                          </td>
+                          <td >{{step.startDate | date}}</td>
+                          <td >{{step.endDate | date}}</td>
+                          <td th:text="${camp.description}">{{step.description}}</td>
+                          <td >
+                              <a class="btn btn-default" th:href="|/leaderboard/${camp.id}|"><i align ="center" class="glyphicon glyphicon-tasks"></i></a>
+                          </td>
+                          <td align="center" >
+                              <a class="btn btn-default" th:href="|/step/${camp.id}|"><i align ="center" class="glyphicon glyphicon-tasks"></i></a>
+                          </td>
+                      </tr>
+                      </tbody>
+                  </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

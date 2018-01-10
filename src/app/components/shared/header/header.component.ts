@@ -11,11 +11,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isAuthenticated;
   public isAdmin;
   public user;
+  public username;
 
   private sub;
 
 
   constructor(private authService: AuthService) {
+
+    this.sub = this.authService.username.subscribe(data=>{
+      this.username = data;
+    })
     
     this.sub = this.authService.isAuthenticated.subscribe(data => {
       this.isAuthenticated = data
