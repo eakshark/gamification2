@@ -6,6 +6,7 @@ import { RegisterComponent } from '../components/auth/register/register.componen
 import { CompanyComponent } from '../components/company/company.component';
 import { CampaignComponent } from '../components/campaign/campaign.component';
 import { AllCampaignComponent } from '../components/campaign/all-campaign/all-campaign.component';
+import { AddCompanyComponent } from '../components/company/add-company/add-company.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'campaign/all',
     component: AllCampaignComponent
+  },
+  {
+    path: 'company/add',
+    component: AddCompanyComponent
   }
 
 ]

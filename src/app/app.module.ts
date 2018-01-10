@@ -22,6 +22,7 @@ import { StepComponent } from './components/step/step.component';
 import { StepService } from './services/step/step.service';
 import { AllCampaignComponent } from './components/campaign/all-campaign/all-campaign.component';
 import { CampaignService } from './services/campaign/campaign.service';
+import { AddCompanyComponent } from './components/company/add-company/add-company.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { CampaignService } from './services/campaign/campaign.service';
     CampaignComponent,
     StepsComponent,
     StepComponent,
-    AllCampaignComponent
+    AllCampaignComponent,
+    AddCompanyComponent
   ],
   imports: [
     BrowserModule,

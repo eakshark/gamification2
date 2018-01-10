@@ -22,7 +22,7 @@
         <li *ngIf="isAdmin || isAuthenticated" class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Companies<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li *ngIf="isAdmin"><a href="#">Add Company</a></li>
+            <li *ngIf="isAdmin"><a routerLink="/company/add">Add Company</a></li>
             <li><a routerLink="/companies/all/0">All Companies</a></li>
 
           </ul>

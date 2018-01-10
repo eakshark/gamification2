@@ -22,4 +22,21 @@ export class CompanyService {
     return this.http.get(url, { withCredentials: true, headers });
   }
 
+  addCompany(name){
+      let data = {
+        name
+      }
+      let headers = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/json');
+      this.http.post('http://localhost:8080/company/add', JSON.stringify(data), { withCredentials: true ,headers})
+      .subscribe((data: any) => {
+        
+        this.router.navigateByUrl('companies/all/0');
+        
+      },
+      err => {
+        
+      });
+
+    }
 }

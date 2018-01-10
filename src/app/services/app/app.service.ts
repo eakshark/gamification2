@@ -11,11 +11,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 
-export class Foo {
-  constructor(
-    public id: number,
-    public name: string) { }
-}
+
 
 
 @Injectable()
